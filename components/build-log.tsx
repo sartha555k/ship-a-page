@@ -23,7 +23,7 @@ export function BuildLog() {
         {filtered.length === 0 ? (
           <div className="empty-state"><FlaskConical size={32} /><h3>No builds here yet.</h3><p>The first {filter.toLowerCase()} page will show up after it’s built.</p><button className="text-link" onClick={() => setFilter('All builds')}>Back to all builds <ArrowRight size={16} /></button></div>
         ) : filter === 'All builds' && (
-          <article className="next-build"><div className="next-top"><span className="eyebrow">NEXT UP / 001</span><Plus size={24} /></div><div><span className="next-asterisk" aria-hidden="true">✳</span><h3>This spot is<br />for the next rabbit hole.</h3><p>No sneak peek yet. The first experiment goes here once there’s something you can try.</p></div><span className="next-status"><span className="dot" /> IDEA NOT PICKED YET</span></article>
+          <article className="next-build"><div className="next-top"><span className="eyebrow">NEXT UP / 002</span><Plus size={24} /></div><div><span className="next-asterisk" aria-hidden="true">✳</span><h3>This spot is<br />for the next rabbit hole.</h3><p>The next experiment joins this collection when there’s something you can try.</p></div><span className="next-status"><span className="dot" /> ROOM FOR THE NEXT IDEA</span></article>
         )}
       </div>
     </>
