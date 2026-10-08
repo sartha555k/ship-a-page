@@ -246,3 +246,21 @@ footer .wordmark { font-size: 20px; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal-pending { opacity: 1; transform: none; }
 }
+/* Shared surfaces: new experiment pages inherit these theme tokens. */
+:root { --surface: #fffefa; --soft: #f0f2e8; --header-bg: #faf8f4ed; --accent-text: #52670e; }
+:root[data-theme='dark'] { --bg: #151712; --text: #eeefe7; --muted: #a5ab9c; --line: #363b30; --surface: #1e211a; --soft: #252a1e; --header-bg: #151712ed; --accent-text: #ccf647; color-scheme: dark; }
+.site-header { background: var(--header-bg); }
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); flex-shrink: 0; }
+.navigation .theme-toggle { margin-left: auto; }
+.highlight, .preview-content mark, .lime-check { color: #171816; }
+.build-card, .sticker, .note-card { background: var(--surface); }
+.ticker, .routine, .next-build, .closing { background: var(--soft); }
+.portrait-caption { background: var(--header-bg); }
+:root[data-theme='dark'] .build-preview { background: #2c3520; }
+:root[data-theme='dark'] .workbench { background: #0e100c; color: #eeefe7; }
+:root[data-theme='dark'] .workbench-controls button[aria-selected='true'] { color: #171816; }
+:root[data-theme='dark'] .closing:before, :root[data-theme='dark'] .closing:after { color: #3c4929; }
+:root[data-theme='dark'] .wordmark span, :root[data-theme='dark'] .card-meta > span:last-child, :root[data-theme='dark'] .details:hover, :root[data-theme='dark'] .text-link:hover, :root[data-theme='dark'] .nav-links a:hover { color: var(--lime); }
+:root[data-theme='dark'] .button:hover, :root[data-theme='dark'] .nav-button:hover { background: #ccf647; color: #171816; }
+:root[data-theme='dark'] ::selection { color: #171816; }
+@media(max-width:760px) { .navigation { gap: 12px; } .navigation .nav-button { display: none; } }

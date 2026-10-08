@@ -4,14 +4,14 @@
 
 ## Run locally
 
-Requires Node 22.13+ and pnpm 10.
+Requires Node 22.13+ and npm 11.
 
 ```sh
-pnpm install
-pnpm dev
+npm ci
+npm run dev
 ```
 
-Open http://localhost:3000. Verify with `pnpm typecheck` and `pnpm build`.
+Open http://localhost:3000. Verify with `npm run typecheck`, `npm test` and `npm run build`.
 
 ## Structure
 
@@ -34,3 +34,11 @@ Open http://localhost:3000. Verify with `pnpm typecheck` and `pnpm build`.
 Research runs at 7am and 5pm IST. The evening brief proposes five ideas; implementation starts after Sarthak selects one. Upcoming projects are clearly labeled; the homepage is Build 000, the foundation.
 
 The homepage uses Base UI’s accessible dialog, Lucide icons, Tailwind CSS, and custom visual components. No API key is needed. Model-specific credentials for future experiments belong only in server-side environment variables.
+
+## Called It and themes
+
+`/experiments/called-it` records predictions, deadlines, challenges and evidence-backed resolutions using Supabase Auth with X OAuth 2.0. See [activation and data rules](docs/called-it.md). Public browsing needs no account; publishing requires sign-in. Until the backend is configured, the page clearly labels its illustrative collection and does not accept writes.
+
+The homepage and all experiment routes share light/dark tokens. The header switch remembers the choice; first visits follow the system preference.
+
+Only placeholder values belong in `.env.example`; real credentials remain outside Git.

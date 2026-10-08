@@ -15,4 +15,11 @@ export const builds: Build[] = [{
   category: 'Interfaces',
   tags: ['Next.js', 'TypeScript', 'Base UI'],
   href: '/',
+}, {
+  id: '001',
+  title: 'Called It. Words on record.',
+  description: 'Make a prediction, set a deadline, and keep the receipt. Browse the collection, then back or challenge a call.',
+  category: 'Experiments',
+  tags: ['Next.js', 'Supabase', 'X sign-in'],
+  href: '/experiments/called-it',
 }];
