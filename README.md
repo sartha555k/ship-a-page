@@ -34,3 +34,7 @@ Open http://localhost:3000. Verify with `pnpm typecheck` and `pnpm build`.
 Research runs at 7am and 5pm IST. The evening brief proposes five ideas; implementation starts after Sarthak selects one. Upcoming projects are clearly labeled; the homepage is Build 000, the foundation.
 
 The homepage uses Base UI’s accessible dialog, Lucide icons, Tailwind CSS, and custom visual components. No API key is needed. Model-specific credentials for future experiments belong only in server-side environment variables.
+
+## Backend foundation
+
+Server-only Supabase, input validation, shared database quotas, and optional AI Gateway text calls live in `lib/server/`. See [backend setup](docs/backend.md) and [.env.example](.env.example) for the values to enter in Vercel. No login or real credentials are included. AI is disabled by default. Run `pnpm test` for backend boundary tests.
