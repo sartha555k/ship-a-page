@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 test('global theme persists across homepage, experiment and refresh', async ({ page }) => {
  const errors: string[]=[]; page.on('pageerror',e=>errors.push(e.message));
- await page.emulateMedia({ colorScheme: 'light' }); await page.goto('/');
+ await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' }); await page.goto('/');
  await page.getByRole('button',{name:'Switch to dark mode'}).click();
  await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
  await page.screenshot({path:'test-results/home-dark.png',fullPage:true});
@@ -12,9 +12,12 @@ test('global theme persists across homepage, experiment and refresh', async ({ p
 });
 test('feed, filters, detail and receipt download work', async ({ page }) => {
  const errors: string[]=[]; page.on('pageerror',e=>errors.push(e.message));
- await page.emulateMedia({colorScheme:'light'}); await page.goto('/experiments/called-it');
+ await page.emulateMedia({colorScheme:'light', reducedMotion:'reduce'}); await page.goto('/experiments/called-it');
  await expect(page.getByText('Preview collection.')).toBeVisible();
  await expect(page.locator('.ci-card')).toHaveCount(3);
+ await expect(page.locator('.ci-vault-image')).toBeVisible();
+ await expect.poll(()=>page.locator('.ci-vault-image').evaluate((image: HTMLImageElement)=>image.naturalWidth)).toBeGreaterThan(0);
+ await expect(page.locator('.ci-vault-image')).toHaveCSS('animation-name','none');
  await page.screenshot({path:'test-results/called-it-light.png',fullPage:true});
  await page.getByRole('button',{name:'Resolved',exact:true}).click(); await expect(page.locator('.ci-card')).toHaveCount(1);
  await page.getByRole('button',{name:'All calls',exact:true}).click();
@@ -42,7 +45,7 @@ test('compose validates, reviews, edits and supports keyboard dismiss', async ({
  await page.keyboard.press('Escape'); await expect(page.getByRole('dialog')).not.toBeVisible();
 });
 test('mobile layout has no overflow, works in both themes and follows system preference', async ({ page }) => {
- await page.setViewportSize({width:390,height:844}); await page.emulateMedia({colorScheme:'dark'}); await page.goto('/experiments/called-it');
+ await page.setViewportSize({width:390,height:844}); await page.emulateMedia({colorScheme:'dark', reducedMotion:'reduce'}); await page.goto('/experiments/called-it');
  await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
  await page.screenshot({path:'test-results/called-it-mobile-dark.png',fullPage:true});

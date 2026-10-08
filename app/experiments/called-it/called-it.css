@@ -14,7 +14,7 @@
 .ci-wordmark > span, .ci-feed-heading h2 > span { color: var(--accent-text); }
 .ci-edition { color: var(--muted); font: 9px var(--mono); letter-spacing: 1px; }
 .ci-preview-note { display: flex; align-items: center; gap: 10px; font-size: 11px; line-height: 1.7; color: var(--muted); border-block: 1px dashed var(--line); padding-block: 12px; }
-.ci-hero { display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; padding-block: 60px 64px; gap: 65px; }
+.ci-hero { overflow: clip; display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; padding-block: 60px 64px; gap: 36px; }
 .ci-hero h1 { font-size: clamp(44px, 5.3vw, 70px); letter-spacing: -3.7px; line-height: 1.08; margin-block: 23px; }
 .ci-lede { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
 .ci-primary, .ci-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 16px; font-weight: 600; font-size: 12px; padding: 15px 21px; border-radius: 99px; border: 1px solid transparent; transition: transform .2s; }
@@ -23,14 +23,19 @@
 .ci-primary:hover, .ci-secondary:hover { transform: translateY(-2px); }
 .ci-app button:disabled, .ci-dialog button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
 .ci-fine { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; line-height: 1.6; margin-top: 14px; }
-.ci-hero-receipt { position: relative; justify-self: end; width: 310px; padding: 29px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 18px 50px #1718160b; transform: rotate(5deg); border-radius: 10px; }
-.ci-ticket-top { font: 8px var(--mono); letter-spacing: 1px; color: var(--muted); padding-bottom: 18px; border-bottom: 1px dashed var(--line); }
-.ci-ticket-stamp { display: inline-block; font: 9px var(--mono); letter-spacing: 1px; border: 1px solid var(--accent-text); color: var(--accent-text); padding: 8px 10px; margin-top: 22px; transform: rotate(-6deg); }
-.ci-hero-receipt > p { font-size: 48px; line-height: 1.06; letter-spacing: -2px; font-weight: 750; margin-block: 30px; }
-.ci-ticket-rule { border-top: 1px dashed var(--line); }
-.ci-ticket-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; color: var(--accent-text); }
-.ci-ticket-bottom > span { font: 8px var(--mono); letter-spacing: .6px; line-height: 2; color: var(--muted); }
-.ci-ticket-bottom b { font-weight: 400; letter-spacing: 0; font: 11px Arial,sans-serif; color: var(--text); }
+.ci-hero-art { position: relative; width: 100%; max-width: 470px; min-width: 0; aspect-ratio: 1; isolation: isolate; justify-self: end; }
+.ci-hero-art::before { content: ''; position: absolute; inset: 13% 5% 8%; border-radius: 50%; background: radial-gradient(ellipse, #ccf64726, transparent 69%); z-index: -1; }
+.ci-art-orbit { position: absolute; inset: 6% 0; border: 1px dashed var(--line); border-radius: 50%; transform: rotate(-24deg) scaleY(.82); z-index: -1; }
+.ci-art-orbit::after { content: '+'; position: absolute; right: 12%; top: 7%; font: 24px var(--mono); color: var(--accent-text); }
+.ci-vault-image { display: block; width: 100%; height: auto; filter: drop-shadow(0 22px 24px #17181614); animation: ci-vault-float 6s ease-in-out infinite; }
+.ci-art-label { position: absolute; top: -8px; left: 8%; font: 8px var(--mono); letter-spacing: 1.3px; color: var(--muted); }
+.ci-art-chip { position: absolute; display: flex; align-items: center; gap: 8px; padding: 12px 15px; border: 1px solid var(--line); background: var(--surface); border-radius: 7px; box-shadow: 0 8px 25px #1718160c; font: 10px var(--mono); }
+.ci-art-chip-lock { left: -2%; top: 31%; transform: rotate(-7deg); }
+.ci-art-chip-time { right: -1%; bottom: 18%; transform: rotate(5deg); }
+.ci-art-chip svg { color: var(--accent-text); }
+.ci-art-caption { position: absolute; bottom: -13px; left: 50%; transform: translateX(-50%); white-space: nowrap; display: flex; align-items: center; gap: 8px; color: var(--muted); font: 8px var(--mono); letter-spacing: 1px; }
+@keyframes ci-vault-float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+@media (prefers-reduced-motion: reduce) { .ci-vault-image { animation: none; } }
 .ci-feed { padding-bottom: 36px; }
 .ci-feed-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; border-top: 1px solid var(--line); padding-top: 28px; }
 .ci-feed-heading h2 { font-size: 30px; letter-spacing: -1px; margin: 0; }
@@ -117,7 +122,7 @@
  .ci-nav { height: 64px; } .ci-nav-actions { gap: 10px; } .ci-member { display: none; }
  .ci-brand-row { padding-block: 27px 20px; } .ci-wordmark { font-size: 29px; } .ci-edition { font-size: 7px; letter-spacing: .5px; }
  .ci-hero { grid-template-columns: 1fr; padding-block: 40px; gap: 36px; } .ci-hero h1 { font-size: clamp(40px,9.5vw,63px); letter-spacing: -2.4px; }
- .ci-hero-receipt { justify-self: center; width: min(280px,90%); padding: 23px; transform: rotate(3deg); } .ci-hero-receipt > p { font-size: 40px; margin-block: 22px; }
+ .ci-hero-art { justify-self: center; width: min(360px,95%); margin-block: 12px 18px; } .ci-art-chip { padding: 10px 12px; font-size: 9px; }
  .ci-lede { font-size: 14px; } .ci-desktop-break { display: none; }
  .ci-grid { grid-template-columns: 1fr; } .ci-toolbar { flex-direction: column; align-items: stretch; } .ci-toolbar > input { width: 100%; }
  .ci-filters button { padding: 9px 12px; font-size: 10px; } .ci-card { padding: 22px; } .ci-card h3 { font-size: 23px; }
