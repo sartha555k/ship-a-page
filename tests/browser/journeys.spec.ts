@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 test('global theme persists across homepage, experiment and refresh', async ({ page }) => {
  const errors: string[]=[]; page.on('pageerror',e=>errors.push(e.message));
  await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' }); await page.goto('/');
+ await expect(page.getByRole('heading',{name:'First, a place to put everything.'})).toHaveCount(0);
+ const preview=page.getByAltText('Called It interface showing a prediction, its deadline, outcome criteria, and Back and Challenge actions.');
+ await preview.scrollIntoViewIfNeeded();
+ await expect.poll(()=>preview.evaluate((image: HTMLImageElement)=>image.naturalWidth)).toBeGreaterThan(0);
  await page.getByRole('button',{name:'Switch to dark mode'}).click();
  await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
  await page.screenshot({path:'test-results/home-dark.png',fullPage:true});

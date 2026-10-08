@@ -20,14 +20,14 @@ Open http://localhost:3000. Verify with `npm run typecheck`, `npm test` and `npm
 - `components/workbench.tsx` — accessible tabs explaining the daily routine.
 - `components/build-log.tsx` — filterable experiment index.
 - `public/sarthak-studio.webp` — newly generated portrait, based on Sarthak’s provided references (not an original photograph).
-- `components/build-card.tsx` — build-log cards and the foundation details dialog.
+- `components/build-card.tsx` — build-log cards with screenshots of the actual experiment interfaces.
 - `data/builds.ts` — the single source of truth for published builds.
 
 ## Add a daily experiment
 
 1. Create `app/experiments/<slug>/page.tsx`.
 2. Reuse existing components and CSS variables.
-3. Add a working experiment to `data/builds.ts` with its route, category, and tags.
+3. Add a working experiment to `data/builds.ts` with its route, category, tags, and a product screenshot with descriptive alt text.
 4. Run type checking and a production build.
 5. Open a separate PR for the approved experiment. Keep merging and publishing explicit.
 
