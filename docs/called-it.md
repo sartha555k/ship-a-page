@@ -31,8 +31,10 @@ Without public configuration the app displays a clearly labelled illustrative co
 
 Run `npm ci`, `npx playwright install chromium`, `npm run typecheck`, `npm test`, `npm run build`, then `npm run test:e2e`. The browser suite uses the production build.
 
-Validated: production build, TypeScript, 5 validation/database tests and 5 browser journeys passed. Desktop/light and mobile/dark screenshots were inspected. When the Playwright browser download was truncated in this runtime, the same suite passed using an installed Chromium binary via `CHROMIUM_PATH`.
+Validated: production build, TypeScript, 5 validation/database tests and 6 browser journeys passed. Desktop/light and mobile/dark screenshots were inspected. When the Playwright browser download was truncated in this runtime, the same suite passed using an installed Chromium binary via `CHROMIUM_PATH`.
 
 Database tests execute the migration in PGlite PostgreSQL with a minimal Supabase auth fixture and real anon/authenticated roles. They verify permissions, impersonation, immutability, quotas, response rules and reviewer-only outcomes. This does not substitute for testing hosted OAuth or concurrent HTTP writes on the chosen Supabase project.
+
+The interface uses a compact social timeline with a composer, author-led posts, public response counts, stance shortcuts and sharing. The artwork is a small intro detail. A large hero and side navigation are intentionally omitted.
 
 Browser tests cover the homepage and experiment's persistent themes, mobile layout, filters/search, receipt detail/download, form review, keyboard dialog and draft validation. The browser suite checks public/preview journeys and safe rejection of unconfigured writes; the database tests separately check authenticated write enforcement. A live X callback, cookie refresh, real publishing, response persistence and reviewer flow remain deployment checks after project/provider configuration.

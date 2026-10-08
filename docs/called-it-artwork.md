@@ -1,6 +1,6 @@
 # Called It hero artwork
 
-Asset: `public/called-it-vault.webp`, 960 × 960, transparent WebP, approximately 146 KB. Generated with the built-in image-generation tool, then resized and encoded for the website. The art is decorative; the heading and publishing action remain real HTML. CSS adds gentle motion and honors reduced-motion preferences. The same asset works in both themes.
+Asset: `public/called-it-vault.webp`, 960 × 960, transparent WebP, approximately 146 KB. Generated with the built-in image-generation tool, then resized and encoded for the website. The art is decorative; the heading and publishing action remain real HTML. The social timeline uses this illustration as a small intro detail rather than a large hero. The same asset works in both themes; no motion is needed for the compact version.
 
 ## Generation prompt
 
