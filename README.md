@@ -15,7 +15,7 @@ Open http://localhost:3000. Verify with `pnpm typecheck` and `pnpm build`.
 
 ## Structure
 
-- `app/` — Next.js App Router pages and global design tokens.
+- `app/` — Next.js App Router pages and global design tokens in `app/site.css`.
 - `components/site-header.tsx`, `reveal.tsx` — responsive navigation and optional scroll reveals.
 - `components/workbench.tsx` — accessible tabs explaining the daily routine.
 - `components/build-log.tsx` — filterable experiment index.
