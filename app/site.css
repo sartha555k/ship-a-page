@@ -162,7 +162,7 @@ footer .wordmark { font-size: 20px; }
 @media (max-width: 1100px) {
   .container { width: calc(100% - 64px); }
   .hero { gap: 38px; }
-  h1 { font-size: 70px; letter-spacing: -4.5px; }
+  h1 { font-size: clamp(54px, 6.7vw, 70px); letter-spacing: -4px; }
   .actions { flex-wrap: wrap; gap: 18px; }
   .sticker { font-size: 10px; padding: 11px 13px; }
   .sticker-top { left: -23px; }
@@ -185,7 +185,7 @@ footer .wordmark { font-size: 20px; }
   .nav-links.is-open { display: flex; position: absolute; top: 73px; left: 0; right: 0; padding: 26px; flex-direction: column; gap: 23px; border-bottom: 1px solid var(--line); background: var(--bg); }
   .hero { grid-template-columns: 1fr; padding-block: 45px 38px; gap: 42px; }
   .hero-copy .eyebrow { font-size: 8px; letter-spacing: .8px; }
-  h1 { font-size: clamp(54px, 11.5vw, 78px); letter-spacing: -3.8px; margin-top: 25px; }
+  h1 { font-size: clamp(44px, 11.5vw, 78px); letter-spacing: -3.8px; margin-top: 25px; }
   .intro { font-size: 15px; max-width: 430px; }
   .button { font-size: 12px; padding: 16px 21px; }
   .actions { gap: 22px; margin-top: 24px; }
