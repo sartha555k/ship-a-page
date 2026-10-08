@@ -1,17 +1,83 @@
-"use client";
-import {useState} from 'react';
-import {ArrowRight,ArrowUpRight,Command,Code2,Radar,FlaskConical,Layers3,Menu,X,Check,Zap} from 'lucide-react';
-import {BuildCard} from '../components/build-card';
-import {SignalBoard} from '../components/signal-board';
-import {builds} from '../data/builds';
-const portfolio='https://sarthakportfolio-one.vercel.app/';
-function Logo(){return <a className="logo" href="#top"><span><Command size={20}/></span>ship<i>/</i>page<b>.</b></a>}
-export default function Home(){const [filter,setFilter]=useState('All builds');const [menu,setMenu]=useState(false);const filtered=builds.filter(b=>filter==='All builds'||b.category===filter);return <main id="top">
-<header><div className="container nav"><Logo/><nav className={menu?'open':''} aria-label="Main navigation"><a href="#builds" onClick={()=>setMenu(false)}>The builds</a><a href="#approach" onClick={()=>setMenu(false)}>The approach</a><a href={portfolio} target="_blank" rel="noreferrer">Meet the builder <ArrowUpRight size={14}/></a></nav><a href="https://github.com/sartha555k/ship-a-page" className="nav-cta" target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={15}/></a><button className="menu" aria-label={menu?'Close navigation':'Open navigation'} aria-expanded={menu} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></div></header>
-<section className="container hero"><div><div className="eyebrow"><span className="dot"/> AN INDEPENDENT BUILD LAB <span className="pill">EST. 2026</span></div><h1>The next thing.<br/>Built into<br/><em>something real.</em></h1><p className="intro">New technology moves fast. We turn the interesting parts into useful, hands-on experiments. One growing playground. Built in public.</p><div className="actions"><a className="button" href="#builds">Explore the builds <ArrowRight size={18}/></a><a className="text-link" href="#approach">How this works <ArrowUpRight size={16}/></a></div><div className="signature"><span>SP</span><div>Built by <a href={portfolio} target="_blank" rel="noreferrer">Sarthak Patel ↗</a><small>Curiosity → code → something you can use.</small></div></div></div><SignalBoard/></section>
-<div className="toolkit"><div className="container"><span className="eyebrow">THE TOOLKIT EVOLVES. THE CURIOSITY STAYS.</span><div>Next.js <i>✳</i> React <i>✳</i> TypeScript <i>✳</i> AI + APIs <i>✳</i> Human taste</div></div></div>
-<section id="builds" className="container section"><div className="heading"><div><div className="eyebrow">01 / THE BUILD LOG</div><h2>A little less theory.<br/>A lot more <em>trying things.</em></h2></div><p>A living collection of small, focused builds.<br/>Every experiment starts with a good question.</p></div><div className="toolbar"><div className="filters" aria-label="Filter builds">{['All builds','AI + agents','Interfaces','Experiments'].map(f=><button key={f} className={filter===f?'selected':''} aria-pressed={filter===f} onClick={()=>setFilter(f)}>{f}{f==='All builds'&&<span>{builds.length}</span>}</button>)}</div><span className="eyebrow"><span className="dot"/> THE LAB IS JUST GETTING STARTED</span></div><div className="build-grid">{filtered.map(build=><BuildCard build={build} key={build.id}/>)}{filtered.length===0?<div className="empty"><FlaskConical size={30}/><h3>Room for the unexpected.</h3><p>No {filter.toLowerCase()} builds yet. The first will appear here once it’s ready to try.</p><button className="text-link" onClick={()=>setFilter('All builds')}>See the foundation <ArrowRight size={16}/></button></div>:<article className="next-build"><div className="next-number">001<span>↗</span></div><div><div className="eyebrow">THE NEXT EXPERIMENT</div><h3>Something worth<br/>opening a new tab for.</h3><p>We’re looking for the next good question.<br/>The first experiment lands here after it’s built.</p></div><div className="next-footer"><span className="eyebrow"><span className="dot"/> ON THE WORKBENCH</span><span>＋</span></div></article>}</div></section>
-<section className="approach" id="approach"><div className="container section"><div className="heading"><div><div className="eyebrow">02 / THE APPROACH</div><h2>Good questions.<br/><em>Working answers.</em></h2></div><p>A useful experiment you can actually try,<br/>with a clear idea behind every interaction.</p></div><div className="process">{[{n:'01',title:'Find the signal.',text:'Look beyond the announcement. Explore what people are building, what’s newly possible, and what still feels broken.',Icon:Radar},{n:'02',title:'Ask a better question.',text:'Choose a real problem and an unexpected angle. An experiment earns its place by doing something useful.',Icon:FlaskConical},{n:'03',title:'Make it tangible.',text:'Build a focused interaction. Share what works, explain the tradeoffs, and keep improving the collection.',Icon:Code2}].map(p=><article key={p.n}><div><span>{p.n}</span><p.Icon size={24}/></div><h3>{p.title}</h3><p>{p.text}</p></article>)}</div></div></section>
-<section className="container section directions"><div className="eyebrow">03 / AREAS OF CURIOSITY</div>{[{name:'AI + agents',text:'Make intelligence useful. Explore workflows, tool use, and the human side of autonomous systems.',Icon:Zap},{name:'Interfaces',text:'Make complicated things feel simple. Build interactions you can understand by trying them.',Icon:Layers3},{name:'Unexpected ideas',text:'Connect the dots differently. Turn a new capability into something worth playing with.',Icon:FlaskConical}].map((d,i)=><article key={d.name}><span className="eyebrow">0{i+1}</span><d.Icon size={27}/><h3>{d.name}</h3><p>{d.text}</p><ArrowUpRight size={24}/></article>)}</section>
-<section className="container closing"><div className="asterisk">✳</div><div className="eyebrow">ALWAYS A WORK IN PROGRESS.</div><h2>Come for the curiosity.<br/><em>Stay for what gets built.</em></h2><a className="button" href="#builds">Back to the workbench <ArrowUpRight size={18}/></a><p>New pages join this collection as experiments become real.</p></section><footer className="container"><Logo/><span>Independent ideas. Shared in public.</span><a href={portfolio} target="_blank" rel="noreferrer">Sarthak Patel ↗</a><a href="#top">Back to top ↑</a></footer>
-</main>}
+import Image from 'next/image';
+import { ArrowDown, ArrowUpRight, Code2, MoveUpRight, Sparkle } from 'lucide-react';
+import { SiteHeader } from '../components/site-header';
+import { BuildLog } from '../components/build-log';
+import { Workbench } from '../components/workbench';
+import { Reveal } from '../components/reveal';
+
+const repository = 'https://github.com/sartha555k/ship-a-page';
+const portfolio = 'https://sarthakportfolio-one.vercel.app/';
+
+export default function Home() {
+  return (
+    <main id="top">
+      <SiteHeader />
+      <section className="container hero" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow"><span className="dot" /> SARTHAK PATEL / BUILDING IN PUBLIC</p>
+          <h1 id="hero-title">New tech<br />drops.<br />I <span className="highlight">build with it.</span></h1>
+          <p className="intro">Hey, I’m Sarthak. A new model, a strange API, an idea I can’t leave alone. I turn them into small things you can actually try.</p>
+          <div className="actions">
+            <a className="button" href="#builds">See what I’m building <ArrowDown size={17} /></a>
+            <a className="text-link" href={repository} target="_blank" rel="noreferrer"><Code2 size={17} /> Follow the code <ArrowUpRight size={14} /></a>
+          </div>
+          <p className="hero-footnote"><span className="hand-arrow" aria-hidden="true">↳</span> One repo. A new page for every experiment.</p>
+        </div>
+        <div className="portrait-stage">
+          <div className="portrait-frame">
+            <Image src="/sarthak-studio.webp" alt="A newly generated studio portrait of Sarthak Patel, seated casually with his hands clasped" width={1000} height={1250} sizes="(max-width: 760px) 90vw, 42vw" preload className="portrait" />
+            <span className="portrait-caption">SARTHAK PATEL <ArrowUpRight size={14} /></span>
+          </div>
+          <span className="sticker sticker-top"><span className="lime-check">✓</span> Too many tabs open</span>
+          <span className="sticker sticker-bottom"><Sparkle size={18} /> Let’s see if this works.</span>
+          <span className="portrait-scribble" aria-hidden="true">✳</span>
+          <span className="portrait-note">the person behind the pages</span>
+        </div>
+      </section>
+
+      <div className="ticker" aria-label="Built with Next.js, TypeScript, models, APIs, and curiosity">
+        <div className="container ticker-inner"><span>THE CURRENT TOOLBOX</span><div>Next.js <b>✳</b> TypeScript <b>✳</b> Models + APIs <b>✳</b> A little curiosity</div></div>
+      </div>
+
+      <section id="builds" className="container section">
+        <Reveal><div className="section-heading">
+          <div><p className="eyebrow">01 / THE BUILD LOG</p><h2>Here’s what<br /><span className="underline-lime">made it out of my tabs.</span></h2></div>
+          <p>Working pages, source code, and a few notes.<br />The collection starts here.</p>
+        </div></Reveal>
+        <BuildLog />
+      </section>
+
+      <section id="routine" className="routine section">
+        <div className="container">
+          <Reveal><div className="section-heading">
+            <div><p className="eyebrow">02 / FROM “WHAT IF” TO A URL</p><h2>The internet moves fast.<br />Let’s <span className="highlight">keep up.</span></h2></div>
+            <p>I follow the launches, dig through what people<br />are making, and pick something worth a shot.</p>
+          </div></Reveal>
+          <Workbench />
+        </div>
+      </section>
+
+      <section id="about" className="container section about">
+        <Reveal className="about-heading"><p className="eyebrow">03 / A NOTE FROM ME</p><h2>I’d rather<br />try the thing.</h2><Sparkle className="about-star" size={70} strokeWidth={1} aria-hidden="true" /></Reveal>
+        <Reveal className="about-copy">
+          <p className="large-copy">Reading the launch post is easy.<br />Finding out what it can do is the fun part.</p>
+          <p>This is my place to do that. Small builds with new models, tools, and ideas — all in one growing project. Some will be useful. Some will be weird. I’ll share what worked and what didn’t.</p>
+          <p>A page earns its spot here when there’s something to click, test, or play with.</p>
+          <a className="text-link" href={portfolio} target="_blank" rel="noreferrer">More about me <ArrowUpRight size={18} /></a>
+        </Reveal>
+      </section>
+
+      <Reveal className="container closing">
+        <span className="eyebrow">SEND ME DOWN A RABBIT HOLE</span>
+        <h2>Got a <span className="highlight">weird idea?</span><br />I’m listening.</h2>
+        <a className="button" href={`${repository}/issues/new`} target="_blank" rel="noreferrer">Drop it on GitHub <MoveUpRight size={18} /></a>
+        <p>A tool you want tested. A problem nobody seems to fix.<br />Something that probably shouldn’t work, but might.</p>
+      </Reveal>
+      <footer className="container">
+        <a className="wordmark" href="#top">sarthak<span>_</span>ships</a>
+        <span>Made by Sarthak. Still figuring things out.</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+    </main>
+  );
+}
