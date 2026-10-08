@@ -1,6 +1,6 @@
 # Ship a Page
 
-An independent build lab by **Sarthak Patel**. One growing Next.js app with useful experiments inspired by new technology and real problems.
+**Sarthak Ships** — small experiments with new technology, by Sarthak Patel. One growing Next.js app; a new page for every approved build.
 
 ## Run locally
 
@@ -16,7 +16,10 @@ Open http://localhost:3000. Verify with `pnpm typecheck` and `pnpm build`.
 ## Structure
 
 - `app/` — Next.js App Router pages and global design tokens.
-- `components/signal-board.tsx` — reusable interactive hero.
+- `components/site-header.tsx`, `reveal.tsx` — responsive navigation and optional scroll reveals.
+- `components/workbench.tsx` — accessible tabs explaining the daily routine.
+- `components/build-log.tsx` — filterable experiment index.
+- `public/sarthak-studio.webp` — newly generated portrait, based on Sarthak’s provided references (not an original photograph).
 - `components/build-card.tsx` — build-log cards and the foundation details dialog.
 - `data/builds.ts` — the single source of truth for published builds.
 
